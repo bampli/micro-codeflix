@@ -2,12 +2,14 @@ import { CssBaseline, MuiThemeProvider } from '@material-ui/core';
 import { BrowserRouter } from 'react-router-dom';
 import theme from './theme';
 import AppRouter from './routes/AppRouter';
+import Navbar from './components/Navbar';
 
 function App() {
   return (
     <MuiThemeProvider theme={theme}>
       <CssBaseline>
         <BrowserRouter>
+          <Navbar />
           <AppRouter />
         </BrowserRouter>
       </CssBaseline>
