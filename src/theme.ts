@@ -1,6 +1,7 @@
 import { red } from "@material-ui/core/colors";
 import { createTheme } from "@material-ui/core/styles";
 import { PaletteOptions } from "@material-ui/core/styles/createPalette";
+import { Theme } from "@material-ui/core";
 
 const palette: PaletteOptions = { // to override below, it should be here
   background: {
@@ -30,3 +31,28 @@ const theme = createTheme({   // use and override palette
 });
 
 export default theme;
+
+const backgroundColor = '#3b3b3a';
+
+export const menuTheme = (theme: Theme): Theme => ({
+  ...theme,
+  overrides: {
+    ...theme.overrides,
+    MuiPaper: {
+      root: {
+        backgroundColor,
+        padding: '0 10px',
+        width: '300px'
+      }
+    },
+    MuiMenuItem: {
+      root: {
+        borderBottom: '2px solid transparent',
+        '&:hover': {
+          borderBottom: '2px solid #ffde39',
+          backgroundColor
+        }
+      }
+    }
+  }
+})
