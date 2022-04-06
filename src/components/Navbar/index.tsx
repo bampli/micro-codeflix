@@ -1,5 +1,5 @@
-import { AppBar, Toolbar } from '@material-ui/core';
-import { makeStyles } from '@material-ui/styles';
+import { AppBar, Grid, makeStyles, Toolbar } from '@material-ui/core';
+import InputSearch from '../InputSearch';
 import MenuAccount from './menus/MenuAccount';
 import MenuCategories from './menus/MenuCategories';
 import Notifications from './Notifications';
@@ -20,6 +20,11 @@ const Navbar: React.FunctionComponent = () => {
                 <Toolbar>
                     <MenuCategories />
                     <Title />
+                    <Grid container justifyContent="center">
+                        <Grid item xs={8} lg={7} xl={7}>
+                            <InputSearch />
+                        </Grid>
+                    </Grid>
                     <Notifications />
                     <MenuAccount />
                     {/* Busca, notificações e menu conta */}

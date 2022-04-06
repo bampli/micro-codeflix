@@ -1,4 +1,4 @@
-import { Box, ListItemIcon, ListItemText, Menu as MuiMenu, MenuItem, MuiThemeProvider } from '@material-ui/core';
+import { Box, ListItemIcon, ListItemText, Menu, MenuItem, MuiThemeProvider } from '@material-ui/core';
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import Arrow from "@material-ui/icons/KeyboardArrowDown";
 import useMenu from '../../../hooks/useMenu';
@@ -21,7 +21,7 @@ const MenuAccount: React.FunctionComponent = () => {
                     Nome usuário
                     <Arrow />
                 </Box>
-                <MuiMenu
+                <Menu
                     // id="menu-appbar"
                     open={open}
                     anchorEl={anchorEl}
@@ -36,7 +36,7 @@ const MenuAccount: React.FunctionComponent = () => {
                         </ListItemIcon>
                         <ListItemText primary="sair" />
                     </MenuItem>
-                </MuiMenu>
+                </Menu>
             </div >
         </MuiThemeProvider>
     );
