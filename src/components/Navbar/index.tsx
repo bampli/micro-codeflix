@@ -1,4 +1,5 @@
-import { AppBar, Grid, makeStyles, Toolbar } from '@material-ui/core';
+import { AppBar, Grid, IconButton, makeStyles, Toolbar } from '@material-ui/core';
+import SearchIcon from "@material-ui/icons/Search";
 import useIsSmallWindow from '../../hooks/useIsSmallWindow';
 import InputSearch from '../InputSearch';
 import MenuAccount from './menus/MenuAccount';
@@ -32,6 +33,13 @@ const Navbar: React.FunctionComponent = () => {
                             <Notifications />
                             <MenuAccount />
                         </>
+                    )}
+                    {isSmallWindow && (
+                        <Grid container justifyContent={"flex-end"}>
+                            <IconButton>
+                                <SearchIcon />
+                            </IconButton>
+                        </Grid>
                     )}
                 </Toolbar>
             </AppBar>
