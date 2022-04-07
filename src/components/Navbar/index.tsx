@@ -1,4 +1,5 @@
 import { AppBar, Grid, makeStyles, Toolbar } from '@material-ui/core';
+import useIsSmallWindow from '../../hooks/useIsSmallWindow';
 import InputSearch from '../InputSearch';
 import MenuAccount from './menus/MenuAccount';
 import MenuCategories from './menus/MenuCategories';
@@ -13,21 +14,25 @@ const useStyles = makeStyles((theme) => ({
 
 const Navbar: React.FunctionComponent = () => {
     const classes = useStyles();
+    const isSmallWindow = useIsSmallWindow();
 
     return (
         <div className={classes.root}>
             <AppBar position="fixed">
                 <Toolbar>
-                    <MenuCategories />
+                    {!isSmallWindow && <MenuCategories />}
                     <Title />
-                    <Grid container justifyContent="center">
-                        <Grid item xs={8} lg={7} xl={7}>
-                            <InputSearch />
-                        </Grid>
-                    </Grid>
-                    <Notifications />
-                    <MenuAccount />
-                    {/* Busca, notificações e menu conta */}
+                    {!isSmallWindow && (
+                        <>
+                            <Grid container justifyContent="center">
+                                <Grid item xs={8} lg={7}>
+                                    <InputSearch />
+                                </Grid>
+                            </Grid>
+                            <Notifications />
+                            <MenuAccount />
+                        </>
+                    )}
                 </Toolbar>
             </AppBar>
         </div>
