@@ -6,6 +6,8 @@ import MenuAccount from './menus/MenuAccount';
 import MenuCategories from './menus/MenuCategories';
 import Notifications from './Notifications';
 import Title from './Title';
+import DialogSearchContext from "../DialogSearch/DialogSearchContext";
+import { useCallback, useContext } from "react";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -16,6 +18,11 @@ const useStyles = makeStyles((theme) => ({
 const Navbar: React.FunctionComponent = () => {
     const classes = useStyles();
     const isSmallWindow = useIsSmallWindow();
+    const dialogContext = useContext(DialogSearchContext);
+
+    const handleOpen = useCallback(() => {
+        dialogContext.show();
+    }, [dialogContext]);
 
     return (
         <div className={classes.root}>
@@ -36,7 +43,7 @@ const Navbar: React.FunctionComponent = () => {
                     )}
                     {isSmallWindow && (
                         <Grid container justifyContent={"flex-end"}>
-                            <IconButton>
+                            <IconButton onClick={handleOpen}>
                                 <SearchIcon />
                             </IconButton>
                         </Grid>

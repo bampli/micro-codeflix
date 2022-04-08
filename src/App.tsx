@@ -3,15 +3,18 @@ import { BrowserRouter } from 'react-router-dom';
 import theme from './theme';
 import AppRouter from './routes/AppRouter';
 import Navbar from './components/Navbar';
+import { DialogSearchProvider } from './components/DialogSearch/DialogSearchProvider';
 
 function App() {
   return (
     <MuiThemeProvider theme={theme}>
       <CssBaseline>
-        <BrowserRouter>
-          <Navbar />
-          <AppRouter />
-        </BrowserRouter>
+        <DialogSearchProvider>
+          <BrowserRouter>
+            <Navbar />
+            <AppRouter />
+          </BrowserRouter>
+        </DialogSearchProvider>
       </CssBaseline>
     </MuiThemeProvider>
   );
