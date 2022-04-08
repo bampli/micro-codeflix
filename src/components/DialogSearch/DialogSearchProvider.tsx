@@ -1,14 +1,60 @@
-import { useMemo, useState } from "react";
+import { useMemo, useState, useEffect } from "react";
 import DialogSearchContext from "./DialogSearchContext";
 import DialogSearch from ".";
+import { useHistory } from "react-router-dom";
+import useIsSmallWindow from "../../hooks/useIsSmallWindow";
 
 export const DialogSearchProvider: React.FunctionComponent = (props) => {
     const [open, setOpen] = useState(false);
+    const history = useHistory<{ show_dialog_search?: boolean }>();
+    const isSmallWindow = useIsSmallWindow();
 
     const actions = useMemo(() => ({
         show: () => setOpen(true),
         hide: () => setOpen(false),
     }), []);
+
+    useEffect(() => {
+        const { show_dialog_search, ...otherState } = history.location.state || {};
+        if (open && !show_dialog_search) {
+            history.push({
+                ...history.location,
+                state: {
+                    ...history.location.state,
+                    show_dialog_search: true,
+                },
+            });
+        } else {
+            if (open) {
+                return;
+            }
+            history.replace({
+                ...history.location,
+                state: {
+                    ...otherState,
+                },
+            });
+        }
+    }, [open, history]);
+
+    useEffect(() => {
+        const unregister = history.listen((location, action) => {
+            if (action === "POP") {
+                const { show_dialog_search } = location.state || {};
+                console.log("POP", show_dialog_search);
+                show_dialog_search ? actions.show() : actions.hide();
+            }
+        });
+        return () => {
+            unregister();
+        };
+    }, [actions, history]);
+
+    useEffect(() => {
+        if (!isSmallWindow) {
+            actions.hide();
+        }
+    }, [isSmallWindow, actions]);
 
     return (
         <DialogSearchContext.Provider value={actions}>

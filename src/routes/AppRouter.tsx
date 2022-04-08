@@ -19,3 +19,21 @@ const AppRouter: React.FunctionComponent = () => {
 };
 
 export default AppRouter;
+
+// const AppRouter: React.FunctionComponent = () => {
+//   const history = useHistory<{ show_dialog_search?: boolean }>();
+//   return (
+//     <Router history={history}>
+//       {routes.map((route, key) => {
+//         return (
+//           <Route
+//             key={key}
+//             path={route.path}
+//             component={route.component}
+//             exact={route.exact === true}
+//           />
+//         );
+//       })}
+//     </Router>
+//   );
+// };
