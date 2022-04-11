@@ -8,14 +8,13 @@ import { DialogSearchProvider } from './components/DialogSearch/DialogSearchProv
 function App() {
   return (
     <MuiThemeProvider theme={theme}>
-      <CssBaseline>
-        <DialogSearchProvider>
-          <BrowserRouter>
-            <Navbar />
-            <AppRouter />
-          </BrowserRouter>
-        </DialogSearchProvider>
-      </CssBaseline>
+      <CssBaseline />
+      <DialogSearchProvider>
+        <BrowserRouter>
+          <Navbar />
+          <AppRouter />
+        </BrowserRouter>
+      </DialogSearchProvider>
     </MuiThemeProvider>
   );
 }

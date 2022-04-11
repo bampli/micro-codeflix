@@ -6,7 +6,7 @@ import reportWebVitals from './reportWebVitals';
 import { createRoot } from 'react-dom/client';
 
 const rootNode = document.getElementById('root');
-createRoot(rootNode as any).render(<App />);
+createRoot(rootNode as Element).render(<App />);
 
 // ReactDOM.render(
 //   <React.StrictMode>

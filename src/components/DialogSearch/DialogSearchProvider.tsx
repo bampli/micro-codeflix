@@ -6,7 +6,10 @@ import useIsSmallWindow from "../../hooks/useIsSmallWindow";
 
 export const DialogSearchProvider: React.FunctionComponent = (props) => {
     const [open, setOpen] = useState(false);
+    
     const history = useHistory<{ show_dialog_search?: boolean }>();
+    console.log("HISTORY", history);
+
     const isSmallWindow = useIsSmallWindow();
 
     const actions = useMemo(() => ({
