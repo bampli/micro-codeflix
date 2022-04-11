@@ -9,12 +9,12 @@ function App() {
   return (
     <MuiThemeProvider theme={theme}>
       <CssBaseline />
-      <DialogSearchProvider>
-        <BrowserRouter>
+      <BrowserRouter>
+        <DialogSearchProvider>
           <Navbar />
           <AppRouter />
-        </BrowserRouter>
-      </DialogSearchProvider>
+        </DialogSearchProvider>
+      </BrowserRouter>
     </MuiThemeProvider>
   );
 }

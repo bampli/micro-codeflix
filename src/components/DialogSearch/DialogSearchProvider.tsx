@@ -1,14 +1,20 @@
 import { useMemo, useState, useEffect } from "react";
 import DialogSearchContext from "./DialogSearchContext";
 import DialogSearch from ".";
-import { useHistory } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useIsSmallWindow from "../../hooks/useIsSmallWindow";
+import { createBrowserHistory } from "history";
 
 export const DialogSearchProvider: React.FunctionComponent = (props) => {
     const [open, setOpen] = useState(false);
+
+    const history = createBrowserHistory();
+    const { show_dialog_search, ...otherState } = useParams() || {};
     
-    const history = useHistory<{ show_dialog_search?: boolean }>();
     console.log("HISTORY", history);
+    console.log(`history.location.state: ${history.location.state}`);
+    console.log(`show_dialog_search: ${show_dialog_search}`);
+    console.log(`otherState: ${otherState}`);
 
     const isSmallWindow = useIsSmallWindow();
 
@@ -18,40 +24,39 @@ export const DialogSearchProvider: React.FunctionComponent = (props) => {
     }), []);
 
     useEffect(() => {
-        const { show_dialog_search, ...otherState } = history.location.state || {};
         if (open && !show_dialog_search) {
-            history.push({
-                ...history.location,
-                state: {
-                    ...history.location.state,
+            history.push(
+                history.location,
+                {
                     show_dialog_search: true,
                 },
-            });
+            );
         } else {
             if (open) {
                 return;
             }
-            history.replace({
-                ...history.location,
-                state: {
+            history.replace(
+                history.location,
+                {
                     ...otherState,
                 },
-            });
+            );
         }
-    }, [open, history]);
+    }, [open, history, show_dialog_search, otherState]);
 
     useEffect(() => {
-        const unregister = history.listen((location, action) => {
+        const unregister = history.listen(({location, action}) => {
             if (action === "POP") {
-                const { show_dialog_search } = location.state || {};
-                console.log("POP", show_dialog_search);
+                //const { show_dialog_search } = location.state || {};
+                console.log("POP STATE", location.state);
+                console.log("POP SHOW_DIALOG_SEARCH", show_dialog_search);
                 show_dialog_search ? actions.show() : actions.hide();
             }
         });
         return () => {
             unregister();
         };
-    }, [actions, history]);
+    }, [actions, history, show_dialog_search]);
 
     useEffect(() => {
         if (!isSmallWindow) {
