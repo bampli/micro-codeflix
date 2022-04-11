@@ -28,7 +28,8 @@ const AppRouter: React.FunctionComponent = () => {
           <Route
             key={key}
             path={route.path}
-            element={`<${route.element}>`}
+            element={route.element}
+            //element={`<${route.element}>`}
             //exact={route.exact === true}
           />
         );
