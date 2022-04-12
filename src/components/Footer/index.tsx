@@ -1,5 +1,7 @@
 import { AppBar, BottomNavigation, makeStyles } from "@material-ui/core";
-import {Home, Notifications, Person} from "@material-ui/icons";
+import { Home, Notifications, Person } from "@material-ui/icons";
+import { useCallback, useState } from "react";
+import DialogMyAccount from "../DialogMyAccount";
 import FooterItem from "./FooterItem";
 
 const useStyles = makeStyles((theme) => ({
@@ -21,6 +23,16 @@ const useStyles = makeStyles((theme) => ({
 const Footer: React.FunctionComponent = () => {
     const classes = useStyles();
 
+    const [openDialogAccount, setOpenDialogAccount] = useState(false);
+
+    const onClickMyAccount = useCallback(() => {
+        setOpenDialogAccount(true);
+    }, []);
+
+    const onDialogAccountClose = useCallback(() => {
+        setOpenDialogAccount(false);
+    }, []);
+
     return (
         <div className={classes.root}>
             <AppBar
@@ -32,11 +44,22 @@ const Footer: React.FunctionComponent = () => {
             >
                 <BottomNavigation className={classes.bottomNavigation} showLabels>
                     <FooterItem label="Home" value="home" icon={<Home />} />
-                    <FooterItem label="Categories" value="categories" icon={<Home />} />
+                    <FooterItem
+                        label="Categories"
+                        value="categories"
+                        icon={<Home />} />
                     <FooterItem label="Notificações" icon={<Notifications />} />
-                    <FooterItem label="Conta" icon={<Person />} />
+                    <FooterItem
+                        label="Conta"
+                        icon={<Person />}
+                        onClick={onClickMyAccount}
+                    />
                 </BottomNavigation>
             </AppBar>
+            <DialogMyAccount
+                open={openDialogAccount}
+                onClose={onDialogAccountClose}
+            />
         </div>
     );
 };
