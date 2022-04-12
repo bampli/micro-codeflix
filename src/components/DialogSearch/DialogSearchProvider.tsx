@@ -12,9 +12,6 @@ export const DialogSearchProvider: React.FunctionComponent = (props) => {
     const { show_dialog_search, ...otherState } = useParams() || {};
     
     console.log("HISTORY", history);
-    console.log(`history.location.state: ${history.location.state}`);
-    console.log(`show_dialog_search: ${show_dialog_search}`);
-    console.log(`otherState: ${otherState}`);
 
     const isSmallWindow = useIsSmallWindow();
 
@@ -26,8 +23,9 @@ export const DialogSearchProvider: React.FunctionComponent = (props) => {
     useEffect(() => {
         if (open && !show_dialog_search) {
             history.push(
-                history.location,
+                {...history.location},
                 {
+                    ...history.location.state as any,
                     show_dialog_search: true,
                 },
             );
@@ -36,7 +34,7 @@ export const DialogSearchProvider: React.FunctionComponent = (props) => {
                 return;
             }
             history.replace(
-                history.location,
+                {...history.location},
                 {
                     ...otherState,
                 },
@@ -47,9 +45,7 @@ export const DialogSearchProvider: React.FunctionComponent = (props) => {
     useEffect(() => {
         const unregister = history.listen(({location, action}) => {
             if (action === "POP") {
-                //const { show_dialog_search } = location.state || {};
                 console.log("POP STATE", location.state);
-                console.log("POP SHOW_DIALOG_SEARCH", show_dialog_search);
                 show_dialog_search ? actions.show() : actions.hide();
             }
         });
