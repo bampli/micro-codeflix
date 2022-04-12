@@ -3,7 +3,10 @@ import { createTheme } from "@material-ui/core/styles";
 import { PaletteOptions } from "@material-ui/core/styles/createPalette";
 import { Theme } from "@material-ui/core";
 
-const palette: PaletteOptions = { // to override below, it should be here
+const palette: PaletteOptions = { // to override, it should be here
+  primary: {
+    main: red["500"],
+  },
   background: {
     default: "#1f1f1f",
   },
@@ -35,6 +38,11 @@ const theme = createTheme({   // use and override palette
     MuiAppBar: {
       colorPrimary: {
         backgroundColor: palette.background?.default,
+      }
+    },
+    MuiDivider: {
+      root: {
+        backgroundColor: palette.text?.secondary,
       }
     },
     MuiDialog: {
