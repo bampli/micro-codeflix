@@ -4,17 +4,27 @@ import theme from './theme';
 import AppRouter from './routes/AppRouter';
 import Navbar from './components/Navbar';
 import { DialogSearchProvider } from './components/DialogSearch/DialogSearchProvider';
+import useIsSmallWindow from './hooks/useIsSmallWindow';
+import Footer from './components/Footer';
+
+function Main() {   // assures that hook works fine, after App init
+  const isSmallWindow = useIsSmallWindow();
+  return (
+    <BrowserRouter>
+      <DialogSearchProvider>
+        <Navbar />
+        <AppRouter />
+        {isSmallWindow && <Footer />}
+      </DialogSearchProvider>
+    </BrowserRouter>
+  );
+}
 
 function App() {
   return (
     <MuiThemeProvider theme={theme}>
       <CssBaseline />
-      <BrowserRouter>
-        <DialogSearchProvider>
-          <Navbar />
-          <AppRouter />
-        </DialogSearchProvider>
-      </BrowserRouter>
+      <Main />
     </MuiThemeProvider>
   );
 }
