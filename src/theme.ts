@@ -21,13 +21,6 @@ const palette: PaletteOptions = { // to override below, it should be here
 
 const theme = createTheme({   // use and override palette
   palette,
-  overrides: {
-    MuiAppBar: {
-      colorPrimary: {
-        backgroundColor: palette.background?.default,
-      }
-    }
-  },
   breakpoints: { // default values
     values: {
       xs: 0,
@@ -37,7 +30,19 @@ const theme = createTheme({   // use and override palette
       lg: 1280,
       xl: 1920,
     }
-  }
+  },
+  overrides: {
+    MuiAppBar: {
+      colorPrimary: {
+        backgroundColor: palette.background?.default,
+      }
+    },
+    MuiDialog: {
+      paper: {
+        backgroundColor: palette.background?.default,
+      }
+    }
+  },
 });
 
 export default theme;
