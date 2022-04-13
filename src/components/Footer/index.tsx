@@ -10,6 +10,7 @@ import FooterItem from "./FooterItem";
 import { createBrowserHistory } from "history";
 import routes from "../../routes";
 import { matchPath } from "react-router-dom";
+import FooterCategoriesItem from "./FooterCategoriesItem";
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -73,10 +74,7 @@ const Footer: React.FunctionComponent = () => {
                         icon={<HomeIcon />}
                         onClick={goHome}
                     />
-                    <FooterItem
-                        label="Categorias"
-                        value="categories"
-                        icon={<HomeIcon />} />
+                    <FooterCategoriesItem currentRoute={currentRoute} />
                     <FooterItem
                         label="Notificações"
                         icon={<NotificationsIcon />}

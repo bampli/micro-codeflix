@@ -13,5 +13,11 @@ const routes: MyRouteProps[] = [
         path: '/',
         element: <Home/>
     },
+    {
+        name: 'video.by-category',
+        label: 'Vídeos por categoria',
+        path: '/categories/:id',
+        element: <Home/> //<VideosByCategory/>
+    },
 ];
 export default routes;
