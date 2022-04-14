@@ -11,15 +11,16 @@ interface FooterCategoriesItemProps extends FooterItemProps {
 
 const FooterCategoriesItem: React.FunctionComponent<FooterCategoriesItemProps> = (props) => {
     const { open, anchorEl, handleOpen, handleClose } = useMenu();
+    const { currentRoute, ...other } = props;
 
     return (
         <>
             <FooterItem
-                {...props}
+                {...other}
                 label="Conteúdos"
                 icon={<MovieIcon />}
                 onClick={handleOpen}
-                selected={props.currentRoute === 'video.by-category'}
+                selected={currentRoute === 'video.by-category'}
             />
             <ThemeProvider theme={menuTheme} >
                 <Menu
