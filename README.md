@@ -23,5 +23,8 @@ npm install @types/react-router-dom --save
 @material-ui/core@4.12.4
 react-router-dom@5.2.0
 @types/react-router-dom@5.3.3
+react-slick@0.28.1
+@types/react-slick@0.23.8
+slick-carousel@1.8.1
 
 ```
