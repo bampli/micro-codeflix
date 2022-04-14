@@ -1,6 +1,7 @@
 import Page from "../components/Page";
 import VideoThumbnail from "../components/Video/VideoThumbnail";
-import Slider from "react-slick";
+import Slider, { Settings } from "react-slick";
+import SlideArrowBase from "../components/Slider/SliderArrowBase";
 
 const Home: React.FunctionComponent = (props) => {
     // return (
@@ -13,12 +14,15 @@ const Home: React.FunctionComponent = (props) => {
     //     </Page>
     // );
 
-    var settings = {
+    var settings: Settings = {
         dots: true,
         infinite: true,
         speed: 500,
         slidesToShow: 2,
-        slidesToScroll: 2
+        slidesToScroll: 1,
+        arrows: true,
+        prevArrow: <SlideArrowBase dir="left" />,
+        nextArrow: <SlideArrowBase dir="right" />,
     };
     return (
         <Slider {...settings}>
@@ -42,7 +46,6 @@ const Home: React.FunctionComponent = (props) => {
             </div>
         </Slider>
     );
-
 };
 
 export default Home;
