@@ -1,9 +1,10 @@
+import Page from "../components/Page";
 
 const Home: React.FunctionComponent = (props) => {
     return (
-        <div>
-            Home page
-        </div>
+        <Page>
+            <p>adjlkjdljdlsdlksalkdjlkdjlksajdlksajdlkasjdlk</p>
+        </Page>
     );
 };
 

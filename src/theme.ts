@@ -48,6 +48,16 @@ const theme = createTheme({   // use and override palette
     MuiDialog: {
       paper: {
         backgroundColor: palette.background?.default,
+      },
+    },
+    MuiCssBaseline: {
+      "@global": {
+        "html, body, #root, #root>div:nth-child(2": {
+          height: "100%",
+        },
+        body: {
+          overflowX: "hidden",
+        },
       }
     }
   },
