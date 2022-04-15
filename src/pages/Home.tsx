@@ -27,22 +27,22 @@ const Home: React.FunctionComponent = (props) => {
     return (
         <Slider {...settings}>
             <div>
-                <h3>1</h3>
+                <h3>11111111111</h3>
             </div>
             <div>
-                <h3>2</h3>
+                <h3>22222222222</h3>
             </div>
             <div>
-                <h3>3</h3>
+                <h3>33333333333</h3>
             </div>
             <div>
-                <h3>4</h3>
+                <h3>44444444444</h3>
             </div>
             <div>
-                <h3>5</h3>
+                <h3>55555555555</h3>
             </div>
             <div>
-                <h3>6</h3>
+                <h3>66666666666</h3>
             </div>
         </Slider>
     );
