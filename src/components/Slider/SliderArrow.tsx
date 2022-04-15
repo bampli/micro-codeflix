@@ -34,8 +34,7 @@ const SliderArrow: React.FunctionComponent<SliderArrowProps> = (props) => {
 
     return (
         <div
-            className={clsx(
-                classes.root,
+            className={clsx(classes.root,
                 dir === "left" ? "slick-left" : "slick-right"
             )}
         >

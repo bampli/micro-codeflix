@@ -1,7 +1,7 @@
 import { IconButton, IconButtonProps } from "@material-ui/core";
 import { KeyboardArrowLeft, KeyboardArrowRight } from "@material-ui/icons";
 
-interface SlideArrowBaseProps {
+interface SliderArrowBaseProps {
     dir: "left" | "right",
     IconButtonProps?: IconButtonProps;
     classes?: {
@@ -9,7 +9,7 @@ interface SlideArrowBaseProps {
     }
 };
 
-const SlideArrowBase: React.FunctionComponent<SlideArrowBaseProps> = (props) => {
+const SliderArrowBase: React.FunctionComponent<SliderArrowBaseProps> = (props) => {
 
     const { dir, IconButtonProps, classes = {} } = props;
 
@@ -24,4 +24,4 @@ const SlideArrowBase: React.FunctionComponent<SlideArrowBaseProps> = (props) => 
     )
 };
 
-export default SlideArrowBase;
+export default SliderArrowBase;

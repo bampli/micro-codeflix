@@ -7,7 +7,7 @@ import { DialogSearchProvider } from './components/DialogSearch/DialogSearchProv
 import useIsSmallWindow from './hooks/useIsSmallWindow';
 import Footer from './components/Footer';
 
-function Main() {   // assures that hook works fine, after App init
+function Main() {   // hooks work fine here, after App init
   const isSmallWindow = useIsSmallWindow();
   return (
     <BrowserRouter>
