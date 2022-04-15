@@ -7,7 +7,7 @@ const useStyles = makeStyles((theme) => ({
         const style = {
             height: '100%',
             position: "absolute" as any,
-
+            opacity: 0,
         };
         if (props.dir === "right") {
             (style as any).right = 0;
@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
     },
 }));
 
-interface SliderArrowProps {
+export interface SliderArrowProps {
     dir: "left" | "right",
 };
 
