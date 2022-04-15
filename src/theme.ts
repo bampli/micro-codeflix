@@ -88,4 +88,4 @@ export const menuTheme = (theme: Theme): Theme => ({
       }
     }
   }
-})
+});

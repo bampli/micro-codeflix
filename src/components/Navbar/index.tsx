@@ -28,7 +28,7 @@ const Navbar: React.FunctionComponent = () => {
     return (
         <div className={classes.root}>
             <HideOnScroll>
-                <AppBar position="fixed">
+                <AppBar position="relative">        // changed from "fixed"
                     <Toolbar>
                         {!isSmallWindow && <MenuCategories />}
                         <Title />
