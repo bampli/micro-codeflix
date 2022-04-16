@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
         [theme.breakpoints.up("md")]: {
             paddingTop: props.margin === "normal" ? 64 : 80,
         },
-        '&::after': {       // empty bottom space with 100px for mobile
+        '&::after': {       // mobile with 100px bottom space
             [theme.breakpoints.down(theme.breakpoints.values.mobile)]: {
                 display: 'block',
                 content: '""',
