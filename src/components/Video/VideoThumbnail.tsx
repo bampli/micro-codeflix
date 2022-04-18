@@ -1,7 +1,7 @@
-import { Box, makeStyles } from '@material-ui/core';
+import { Box, makeStyles, Theme } from '@material-ui/core';
 
-const useStyles = makeStyles((theme) => ({
-    image: {
+export function getImageSizes(theme: Theme) {
+    return {
         [theme.breakpoints.down(400)]: {
             width: "103px",
             height: "144px",
@@ -27,6 +27,10 @@ const useStyles = makeStyles((theme) => ({
             height: "223px",
         },
     }
+};
+
+const useStyles = makeStyles((theme) => ({
+    image: getImageSizes(theme),
 }));
 
 export interface VideoThumbnailProps {
