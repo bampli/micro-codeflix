@@ -9,7 +9,7 @@ const useStyles = makeStyles((theme) => ({
         const style = {
             display: "flex",
             height: '100%',
-            //position: "absolute" as any,
+            position: "absolute" as any,
             opacity: 0,
             zIndex: 999,
         };
