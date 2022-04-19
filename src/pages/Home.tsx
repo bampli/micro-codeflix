@@ -1,5 +1,6 @@
 import Page from "../components/Page";
-import VideoThumbnail, { getImageSizes } from "../components/Video/VideoThumbnail";
+import VideoThumbnail from "../components/Video/VideoThumbnail";
+//import { getImageSizes } from "../components/Video/VideoThumbnail";
 import Slider, { SliderProps } from "../components/Slider";
 import SliderArrow from "../components/Slider/SliderArrow";
 import useIsSmallWindow from "../hooks/useIsSmallWindow";
@@ -10,9 +11,43 @@ import { makeStyles } from "@material-ui/styles";
 import { Theme } from "@material-ui/core";
 
 const useStyles = makeStyles((theme: Theme) => ({
+    rootImage: {
+        position: "relative",
+        marginRight: "4px",
+        "&:focus": {
+            outlineColor: theme.palette.text.primary,
+        },
+    },
+    image: {
+        [theme.breakpoints.down(400)]: {
+            width: "300px",
+            height: "169px",
+        },
+
+        [theme.breakpoints.up(400)]: {      // up from ~(800 x 1184)
+            width: "350px",
+            height: "197px",
+        },
+
+        [theme.breakpoints.up(700)]: {      // up from ~(1920 x 1080)
+            width: "650px",
+            height: "366px",
+        },
+
+        [theme.breakpoints.up(1200)]: {      // up from ~(1920 x 1080)
+            width: "1150px",
+            height: "647px",
+        },
+
+        [theme.breakpoints.up("xl")]: {      // up from ~(1920 x 1080)
+            width: "393px",
+            height: "223px",
+        },
+    },
+
     get slider() {
         return Object.fromEntries(
-            Object.entries(getImageSizes(theme)).map(size => [
+            Object.entries(this.image).map(size => [
                 size[0],
                 {
                     "& .slick-list, & .slick-track": { height: size[1].height }
@@ -21,14 +56,6 @@ const useStyles = makeStyles((theme: Theme) => ({
         );
     },
 }));
-
-// Object.entries(obj)  // see VideoThumbnail.tsx
-// [
-//     [key, value],
-//     [key, value],
-//     [key, value],
-//     [key, value],
-// ]
 
 const Home: React.FunctionComponent = (props) => {
     const classes = useStyles();
@@ -54,6 +81,7 @@ const Home: React.FunctionComponent = (props) => {
             <Slider {...sliderProps}>
                 <div>
                     <VideoThumbnail
+                        classes={{ root: classes.rootImage, image: classes.image }}
                         ImgProps={{
                             src: thumbnail,
                         }}
@@ -61,6 +89,7 @@ const Home: React.FunctionComponent = (props) => {
                 </div>
                 <div>
                     <VideoThumbnail
+                        classes={{ root: classes.rootImage, image: classes.image }}
                         ImgProps={{
                             src: thumbnail,
                         }}
@@ -68,6 +97,7 @@ const Home: React.FunctionComponent = (props) => {
                 </div>
                 <div>
                     <VideoThumbnail
+                        classes={{ root: classes.rootImage, image: classes.image }}
                         ImgProps={{
                             src: thumbnail,
                         }}
@@ -80,57 +110,22 @@ const Home: React.FunctionComponent = (props) => {
 
 export default Home;
 
-// return (
-//     <Page>
-//         <VideoThumbnail
-//             ImgProps={{
-//                 src: banner,
-//             }}
-//         />
-//     </Page>
-// );
-
-// const Home: React.FunctionComponent = (props) => {
-//     // return (
-//     //     <Page>
-//     //         <VideoThumbnail
-//     //             ImgProps={{
-//     //                 src: banner,
-//     //             }}
-//     //         />
-//     //     </Page>
-//     // );
-
-//     var settings: SliderProps = {
-//         dots: true,
-//         infinite: true,
-//         speed: 500,
-//         slidesToShow: 2,
-//         slidesToScroll: 1,
-//         arrows: true,
-//         prevArrow: <SliderArrow dir="left" />,
-//         nextArrow: <SliderArrow dir="right" />,
-//     };
-//     return (
-//         <Slider {...settings}>
-//             <div>
-//                 <h3>11111111111</h3>
-//             </div>
-//             <div>
-//                 <h3>22222222222</h3>
-//             </div>
-//             <div>
-//                 <h3>33333333333</h3>
-//             </div>
-//             <div>
-//                 <h3>44444444444</h3>
-//             </div>
-//             <div>
-//                 <h3>55555555555</h3>
-//             </div>
-//             <div>
-//                 <h3>66666666666</h3>
-//             </div>
-//         </Slider>
+// it's still possible to getImageSizes from VideoThumbnail
+// get slider() {
+//     return Object.fromEntries(
+//         Object.entries(getImageSizes(theme)).map(size => [
+//             size[0],
+//             {
+//                 "& .slick-list, & .slick-track": { height: size[1].height }
+//             },
+//         ])
 //     );
-// };
+// },
+
+// Object.entries(obj)  // see VideoThumbnail.tsx
+// [
+//     [key, value],
+//     [key, value],
+//     [key, value],
+//     [key, value],
+// ]

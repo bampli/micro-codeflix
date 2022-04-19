@@ -8,7 +8,7 @@ export * from "./SliderArrowBase";
 const useStyles = makeStyles({
     root: {
         "&:hover .slick-left, &:hover .slick-right": {
-            opacity: 1,
+            opacity: 1, // hover over arrows to show them
         }
     }
 });
@@ -21,7 +21,7 @@ const Slider: React.FunctionComponent<SliderProps> = (props) => {
     const className = clsx(classes.root, other.className);
 
     return (
-        <ReactSlider className={className} {...other}>
+        <ReactSlider {...other} className={className} >
             {children}
         </ReactSlider>
     );
