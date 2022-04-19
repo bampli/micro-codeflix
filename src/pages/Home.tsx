@@ -10,6 +10,7 @@ import bannerHalf from "../static/img/logo.png";
 import { makeStyles } from "@material-ui/styles";
 import { Theme } from "@material-ui/core";
 import Rating from "../components/Video/Rating";
+import Category from "../components/Video/Category";
 
 const useStyles = makeStyles((theme: Theme) => ({
     rootImage: {
@@ -80,6 +81,7 @@ const Home: React.FunctionComponent = (props) => {
     return (
         <Page>
             <Rating rating="18" />
+            <Category>Filme</Category>
             <Slider {...sliderProps}>
                 <div>
                     <VideoThumbnail
