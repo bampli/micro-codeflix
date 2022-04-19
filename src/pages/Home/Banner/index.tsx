@@ -1,16 +1,15 @@
-import Page from "../components/Page";
-import VideoThumbnail from "../components/Video/VideoThumbnail";
+import VideoThumbnail from "../../../components/Video/VideoThumbnail";
 //import { getImageSizes } from "../components/Video/VideoThumbnail";
-import Slider, { SliderProps } from "../components/Slider";
-import SliderArrow from "../components/Slider/SliderArrow";
-import useIsSmallWindow from "../hooks/useIsSmallWindow";
+import Slider, { SliderProps } from "../../../components/Slider";
+import SliderArrow from "../../../components/Slider/SliderArrow";
+import useIsSmallWindow from "../../../hooks/useIsSmallWindow";
 import { useMemo } from "react";
-import banner from "../static/img/logo.png";
-import bannerHalf from "../static/img/logo.png";
+import banner from "../../../static/img/logo.png";
+import bannerHalf from "../../../static/img/logo.png";
 import { makeStyles } from "@material-ui/styles";
 import { Theme } from "@material-ui/core";
-import Rating from "../components/Video/Rating";
-import Category from "../components/Video/Category";
+import Rating from "../../../components/Video/Rating";
+import Category from "../../../components/Video/Category";
 
 const useStyles = makeStyles((theme: Theme) => ({
     rootImage: {
@@ -59,7 +58,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     },
 }));
 
-const Home: React.FunctionComponent = (props) => {
+const Banner: React.FunctionComponent = (props) => {
     const classes = useStyles();
     const isSmallWindow = useIsSmallWindow();
     const sliderProps: SliderProps = useMemo(
@@ -79,7 +78,7 @@ const Home: React.FunctionComponent = (props) => {
     );
     const thumbnail = isSmallWindow ? bannerHalf : banner;
     return (
-        <Page>
+        <div>
             <Rating rating="18" />
             <Category>Filme</Category>
             <Slider {...sliderProps}>
@@ -108,11 +107,11 @@ const Home: React.FunctionComponent = (props) => {
                     />
                 </div>
             </Slider>
-        </Page>
+        </div>
     );
 }
 
-export default Home;
+export default Banner;
 
 // it's still possible to getImageSizes from VideoThumbnail
 // get slider() {
