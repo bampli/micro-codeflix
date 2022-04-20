@@ -10,6 +10,7 @@ import { makeStyles } from "@material-ui/styles";
 import { Theme } from "@material-ui/core";
 import BannerRating from "./BannerRating";
 import BannerCategory from "./BannerCategory";
+import VideoLink from "../../../components/Video/VideoLink";
 
 const useStyles = makeStyles((theme: Theme) => ({
     rootImage: {
@@ -96,6 +97,7 @@ const Banner: React.FunctionComponent = (props) => {
                     ))
                 }
             </Slider>
+            <VideoLink>Detalhes</VideoLink>
         </div>
     );
 }
