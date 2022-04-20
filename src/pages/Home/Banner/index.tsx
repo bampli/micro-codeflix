@@ -8,8 +8,8 @@ import banner from "../../../static/img/logo.png";
 import bannerHalf from "../../../static/img/logo.png";
 import { makeStyles } from "@material-ui/styles";
 import { Theme } from "@material-ui/core";
-import Category from "../../../components/Video/Category";
 import BannerRating from "./BannerRating";
+import BannerCategory from "./BannerCategory";
 
 const useStyles = makeStyles((theme: Theme) => ({
     rootImage: {
@@ -79,7 +79,6 @@ const Banner: React.FunctionComponent = (props) => {
     const thumbnail = isSmallWindow ? bannerHalf : banner;
     return (
         <div>
-            <Category>Filme</Category>
             <Slider {...sliderProps}>
                 {Array.from(new Array(6).keys())   // create array with 6 elements
                     .map(() => thumbnail)
@@ -91,6 +90,7 @@ const Banner: React.FunctionComponent = (props) => {
                                 src: thumbnail,
                             }}
                         >
+                            <BannerCategory>Filme de Aventura</BannerCategory>
                             <BannerRating rating="14" />
                         </VideoThumbnail>
                     ))
