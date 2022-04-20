@@ -13,6 +13,7 @@ import BannerCategory from "./BannerCategory";
 import VideoLink from "../../../components/Video/VideoLink";
 import VideoActions from "./VideoActions";
 import Title from "../../../components/Video/Title";
+import VideoContent from "./VideoContent";
 
 const useStyles = makeStyles((theme: Theme) => ({
     rootImage: {
@@ -93,7 +94,12 @@ const Banner: React.FunctionComponent = (props) => {
                                 src: thumbnail,
                             }}
                         >
-                            <BannerCategory>Filme de Aventura</BannerCategory>
+                            <VideoContent video={{
+                                id: "000", title: "epitafios",
+                                categories: [{
+                                    id: "111", name: "Documentario", is_active: true
+                                }]
+                            }} />
                             <BannerRating rating="14" />
                             <VideoActions />
                         </VideoThumbnail>

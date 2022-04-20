@@ -23,6 +23,7 @@ const VideoActions: React.FunctionComponent<VideoActionsProps> = (props) => {
         <div className={classes.root}>
             <VideoLink>Play</VideoLink>
             <VideoLink>Minha lista</VideoLink>
+            <VideoLink>Info</VideoLink>
         </div>
     );
 };
