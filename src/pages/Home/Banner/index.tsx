@@ -101,7 +101,6 @@ const Banner: React.FunctionComponent = (props) => {
                                 }]
                             }} />
                             <BannerRating rating="14" />
-                            <VideoActions />
                         </VideoThumbnail>
                     ))
                 }

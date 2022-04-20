@@ -8,9 +8,9 @@ const useStyles = makeStyles({
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "flex-start",
-        position: "absolute",
-        bottom: 0,
-        left: "4",
+        // position: "absolute",
+        // bottom: 0,
+        // left: "4",
     }
 });
 

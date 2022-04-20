@@ -18,10 +18,7 @@ const Category: React.FunctionComponent<CategoryProps> = (props) => {
     const { className, children } = props;
     const classes = useStyles();
     return (
-        <Typography
-            component="h3"
-            className={clsx(className, classes.root)}
-        >
+        <Typography component="h3" className={clsx(className, classes.root)}>
             {children}
         </Typography>
     );
