@@ -11,6 +11,7 @@ import { Theme } from "@material-ui/core";
 import BannerRating from "./BannerRating";
 import BannerCategory from "./BannerCategory";
 import VideoLink from "../../../components/Video/VideoLink";
+import VideoActions from "./VideoActions";
 
 const useStyles = makeStyles((theme: Theme) => ({
     rootImage: {
@@ -93,6 +94,7 @@ const Banner: React.FunctionComponent = (props) => {
                         >
                             <BannerCategory>Filme de Aventura</BannerCategory>
                             <BannerRating rating="14" />
+                            <VideoActions />
                         </VideoThumbnail>
                     ))
                 }
