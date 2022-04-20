@@ -12,6 +12,7 @@ import BannerRating from "./BannerRating";
 import BannerCategory from "./BannerCategory";
 import VideoLink from "../../../components/Video/VideoLink";
 import VideoActions from "./VideoActions";
+import Title from "../../../components/Video/Title";
 
 const useStyles = makeStyles((theme: Theme) => ({
     rootImage: {
@@ -99,7 +100,7 @@ const Banner: React.FunctionComponent = (props) => {
                     ))
                 }
             </Slider>
-            <VideoLink>Detalhes</VideoLink>
+            <Title>Epitáfios</Title>
         </div>
     );
 }
