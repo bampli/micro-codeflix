@@ -8,8 +8,8 @@ import banner from "../../../static/img/logo.png";
 import bannerHalf from "../../../static/img/logo.png";
 import { makeStyles } from "@material-ui/styles";
 import { Theme } from "@material-ui/core";
-import Rating from "../../../components/Video/Rating";
 import Category from "../../../components/Video/Category";
+import BannerRating from "./BannerRating";
 
 const useStyles = makeStyles((theme: Theme) => ({
     rootImage: {
@@ -79,33 +79,22 @@ const Banner: React.FunctionComponent = (props) => {
     const thumbnail = isSmallWindow ? bannerHalf : banner;
     return (
         <div>
-            <Rating rating="18" />
             <Category>Filme</Category>
             <Slider {...sliderProps}>
-                <div>
-                    <VideoThumbnail
-                        classes={{ root: classes.rootImage, image: classes.image }}
-                        ImgProps={{
-                            src: thumbnail,
-                        }}
-                    />
-                </div>
-                <div>
-                    <VideoThumbnail
-                        classes={{ root: classes.rootImage, image: classes.image }}
-                        ImgProps={{
-                            src: thumbnail,
-                        }}
-                    />
-                </div>
-                <div>
-                    <VideoThumbnail
-                        classes={{ root: classes.rootImage, image: classes.image }}
-                        ImgProps={{
-                            src: thumbnail,
-                        }}
-                    />
-                </div>
+                {Array.from(new Array(6).keys())   // create array with 6 elements
+                    .map(() => thumbnail)
+                    .map((v) => (
+                        <VideoThumbnail
+                            key={v}
+                            classes={{ root: classes.rootImage, image: classes.image }}
+                            ImgProps={{
+                                src: thumbnail,
+                            }}
+                        >
+                            <BannerRating rating="14" />
+                        </VideoThumbnail>
+                    ))
+                }
             </Slider>
         </div>
     );
