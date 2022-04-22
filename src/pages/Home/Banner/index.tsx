@@ -9,9 +9,9 @@ import bannerHalf from "../../../static/img/logo.png";
 import { makeStyles } from "@material-ui/styles";
 import { Theme } from "@material-ui/core";
 import BannerRating from "./BannerRating";
-import BannerCategory from "./BannerCategory";
-import VideoLink from "../../../components/Video/VideoLink";
-import VideoActions from "./VideoActions";
+// import BannerCategory from "./BannerCategory";
+// import VideoLink from "../../../components/Video/VideoLink";
+// import VideoActions from "./VideoActions";
 import Title from "../../../components/Video/Title";
 import VideoContent from "./VideoContent";
 
@@ -84,7 +84,7 @@ const Banner: React.FunctionComponent = (props) => {
     return (
         <div>
             <Slider {...sliderProps}>
-                {Array.from(new Array(6).keys())   // create array with 6 elements
+                {Array.from(new Array(6).keys())   // create empty array with 6 elements
                     .map(() => thumbnail)
                     .map((v) => (
                         <VideoThumbnail
