@@ -3,6 +3,7 @@ import Title from "../../../components/Video/Title";
 import { Video } from "../../../util/model";
 import VideoActions from "./VideoActions";
 import { makeStyles } from "@material-ui/core";
+import useIsSmallWindow from "../../../hooks/useIsSmallWindow";
 
 const useStyles = makeStyles(theme => ({
     root: {
@@ -36,6 +37,7 @@ interface VideoContentProps {
 const VideoContent: React.FunctionComponent<VideoContentProps> = (props) => {
     const { video } = props;
     const classes = useStyles();
+    const isSmallWindow = useIsSmallWindow();
 
     return (
         <div className={classes.root}>
@@ -43,7 +45,7 @@ const VideoContent: React.FunctionComponent<VideoContentProps> = (props) => {
                 {video.categories.map((c) => c.name).join(" | ")}
             </Category>
             <Title className={classes.title}>{video.title}</Title>
-            <VideoActions />
+            {!isSmallWindow && <VideoActions />}
         </div>
     );
 };

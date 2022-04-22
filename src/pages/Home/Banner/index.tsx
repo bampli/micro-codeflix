@@ -14,6 +14,7 @@ import BannerRating from "./BannerRating";
 // import VideoActions from "./VideoActions";
 import Title from "../../../components/Video/Title";
 import VideoContent from "./VideoContent";
+import VideoActionsMobile from "./VideoActions/VideoActionsMobile";
 
 const useStyles = makeStyles((theme: Theme) => ({
     rootImage: {
@@ -105,7 +106,7 @@ const Banner: React.FunctionComponent = (props) => {
                     ))
                 }
             </Slider>
-            <Title>Epitáfios</Title>
+            <VideoActionsMobile />
         </div>
     );
 }
