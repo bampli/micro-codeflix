@@ -1,18 +1,13 @@
 import VideoThumbnail from "../../../components/Video/VideoThumbnail";
-//import { getImageSizes } from "../components/Video/VideoThumbnail";
 import Slider, { SliderProps } from "../../../components/Slider";
 import SliderArrow from "../../../components/Slider/SliderArrow";
 import useIsSmallWindow from "../../../hooks/useIsSmallWindow";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
 import banner from "../../../static/img/logo.png";
 import bannerHalf from "../../../static/img/logo.png";
 import { makeStyles } from "@material-ui/styles";
 import { Theme } from "@material-ui/core";
 import BannerRating from "./BannerRating";
-// import BannerCategory from "./BannerCategory";
-// import VideoLink from "../../../components/Video/VideoLink";
-// import VideoActions from "./VideoActions";
-import Title from "../../../components/Video/Title";
 import VideoContent from "./VideoContent";
 import VideoActionsMobile from "./VideoActions/VideoActionsMobile";
 import SliderStepper from "./SliderStepper";
@@ -66,10 +61,13 @@ const useStyles = makeStyles((theme: Theme) => ({
 
 const Banner: React.FunctionComponent = (props) => {
     const classes = useStyles();
+    const classSlider = classes.slider;
     const isSmallWindow = useIsSmallWindow();
+    const [activeIndex, setActiveIndex] = useState(0);
+
     const sliderProps: SliderProps = useMemo(
         () => ({
-            className: classes.slider,
+            className: classSlider,
             centerMode: true,
             dots: false,
             infinite: true,
@@ -80,7 +78,10 @@ const Banner: React.FunctionComponent = (props) => {
             arrows: !isSmallWindow,
             prevArrow: <SliderArrow dir="left" />,
             nextArrow: <SliderArrow dir="right" />,
-        }), [isSmallWindow, classes.slider]
+            beforeChange: (oldIndex, nextIndex) => {
+                setActiveIndex(nextIndex);
+            }
+        }), [isSmallWindow, classSlider]
     );
     const thumbnail = isSmallWindow ? bannerHalf : banner;
     return (
@@ -88,26 +89,30 @@ const Banner: React.FunctionComponent = (props) => {
             <Slider {...sliderProps}>
                 {Array.from(new Array(6).keys())   // create empty array with 6 elements
                     .map(() => thumbnail)
-                    .map((v) => (
-                        <VideoThumbnail
-                            key={v}
-                            classes={{ root: classes.rootImage, image: classes.image }}
-                            ImgProps={{
-                                src: thumbnail,
-                            }}
-                        >
-                            <VideoContent video={{
-                                id: "000", title: "epitafios",
-                                categories: [{
-                                    id: "111", name: "Documentario", is_active: true
-                                }]
-                            }} />
-                            <BannerRating rating="14" />
-                        </VideoThumbnail>
-                    ))
+                    .map((v, index) => {
+                        const show = activeIndex === index;
+                        return (
+                            <VideoThumbnail
+                                key={v}
+                                classes={{ root: classes.rootImage, image: classes.image }}
+                                ImgProps={{
+                                    src: thumbnail,
+                                }}
+                            >
+                                {show && <VideoContent video={{
+                                    id: "000", title: "epitafios",
+                                    categories: [{
+                                        id: "111", name: "Documentario", is_active: true
+                                    }]
+                                }} />}
+
+                                {show && <BannerRating rating="14" />}
+                            </VideoThumbnail>
+                        )
+                    })
                 }
             </Slider>
-            {!isSmallWindow && <SliderStepper maxSteps={5} activeStep={0} />}
+            {!isSmallWindow && <SliderStepper maxSteps={6} activeStep={activeIndex} />}
             <VideoActionsMobile />
         </div>
     );
@@ -116,6 +121,8 @@ const Banner: React.FunctionComponent = (props) => {
 export default Banner;
 
 // it's still possible to getImageSizes from VideoThumbnail
+// import { getImageSizes } from "../components/Video/VideoThumbnail";
+//
 // get slider() {
 //     return Object.fromEntries(
 //         Object.entries(getImageSizes(theme)).map(size => [
