@@ -1,6 +1,5 @@
 import {
     makeStyles,
-    Typography,
     useMediaQuery,
     useTheme
 } from "@material-ui/core";
@@ -14,35 +13,9 @@ import SliderArrow from "../Slider/SliderArrow";
 import banner from "../../static/img/logo.png";
 //import bannerHalf from "../../static/img/logo.png";
 import bannerThumb from "../../static/img/logo.png";
+import Title from "../../components/Title";
 
-const useSectionTitleStyles = makeStyles(theme => ({
-    root: {
-        fontSize: "1.4em",
-        fontWeight: 600,
-        textTransform: "uppercase",
-        borderBottom: `1px solid ${theme.palette.text.secondary}`,
-        margin: theme.spacing(3, 3),
-
-        [theme.breakpoints.down(theme.breakpoints.values.mobile)]: {
-            margin: theme.spacing(2, 1),
-        }
-    }
-}));
-
-export const SectionTitle: React.FunctionComponent = (props) => {
-    const classes = useSectionTitleStyles();
-    return (
-        <Typography
-            className={classes.root}
-            component="h2"
-            color={"textSecondary"}
-        >
-            {props.children}
-        </Typography>
-    );
-};
-
-const useSectionSliderStyles = makeStyles(theme => ({
+const useStyles = makeStyles(theme => ({
     root: {
         margin: theme.spacing(0, 3),
         [theme.breakpoints.down(theme.breakpoints.values.mobile)]: {
@@ -64,7 +37,7 @@ interface SectionSliderProps {
 
 const SectionSlider: React.FunctionComponent<SectionSliderProps> = (props) => {
     const { title } = props;
-    const classes = useSectionSliderStyles();
+    const classes = useStyles();
     const isSmallWindow = useIsSmallWindow();
     const sliderProps: SliderProps = useMemo(
         () => ({
@@ -87,7 +60,7 @@ const SectionSlider: React.FunctionComponent<SectionSliderProps> = (props) => {
 
     return (
         <div>
-            <SectionTitle>{title}</SectionTitle>
+            <Title>{title}</Title>
             <div className={classes.root}>
                 <Slider {...sliderProps}>
                     {Array.from(new Array(6).keys())   // create empty array with 6 elements
